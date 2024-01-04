@@ -14,8 +14,7 @@ require('dotenv').config();
 // db
 const username="maktabtoko", password="UerJhwAzzFINcHIO",pathdb="maktabtoko";
 
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.kwrtl47.mongodb.net/?retryWrites=true&w=majority`,{        useNewUrlParser: true,
-useUnifiedTopology: true})
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.kwrtl47.mongodb.net/?retryWrites=true&w=majority`)
 .then(() => console.log('Connected!'))
 
 // view engine setup
