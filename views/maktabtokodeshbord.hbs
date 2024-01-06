@@ -35,6 +35,62 @@
     <link rel="stylesheet" href="/stylesheets/owl.carousel.min.css">
     <link rel="stylesheet" href="/stylesheets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .overscrol {
+            width: auto;
+            white-space: nowrap;
+            overflow: scroll;
+            height: 500px;
+        }
+        .overscrol::-webkit-scrollbar {
+            width: 2px;
+
+        }
+
+        .overscrol::-webkit-scrollbar-thumb {
+
+            border-radius: 10px;
+            background-color: #d4af37;
+            /* Set thumb color for Chrome and Safari */
+        }
+
+        .overscrol::-webkit-scrollbar-track {
+            width: 2px;
+            background-color: rgba(0, 128, 0, 0);
+            /* Set track color for Chrome and Safari */
+        }
+        .card {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            margin-bottom: 2rem;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 0.25rem;
+            background-color: rgba(208, 210, 214, 0.13);
+            padding: 1.5rem;
+            box-shadow: 0px 0px 10px #ffffff;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 700;
+            color: #fff
+        }
+
+        .input {
+            color: #FDFEFE;
+        }
+    </style>
 </head>
 
 <body>
@@ -72,7 +128,7 @@
         </div>
     </nav>
     <!--banner section start -->
-    <div class="header_section_5">
+    <div class="header_section_5" style="height: 180vh;">
         <div style="margin-top:0%;" class="add">
             <div>
                 <br><br><br><br>
@@ -80,7 +136,11 @@
                     class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                     قيد السماحية
                 </button>
-                <button style="position: relative; left: 0%; transform: translate(-50%);" type="button"
+                <button style="position: relative; left: 40%; transform: translate(-50%);" type="button"
+                    class="btn btn-warning" data-toggle="modal" data-target="#exampleModal-3">
+                    تجديد الباقة
+                </button>
+                <button style="position: relative; left: -5%; transform: translate(-50%);" type="button"
                     class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2">
                     السماحية
                 </button>
@@ -129,46 +189,164 @@
                                     <button type="submit" class="btn btn-primary">ارسال</button>
                                 </form>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel-3" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title h2" id="exampleModalLabel-3"> تجديد الباقة</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{!-- Form Model --}}
+                                <form action="admin/cardprice" method="post">
+                                    <div class="mb-3 text-center h4">
+                                        <label for="permissions" class="form-label text-danger"> الرقم التعريفي</label>
+                                        <input type="text" name="idOfDay" class="form-control" id="idOfDay">
+                                        <label for="permissions" class="form-label text-danger"> نوع الباقة </label><br>
+                                        <input class="form-control" type="number" name="numberOfDays" id="numberOfDays">
+                                        
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">ارسال</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="all p-3" style="height: 170vh;">
+            <div class="overscrol">
+                <table class="table table-bordered border-primary table-light ">
+                    <thead>
+                        <tr class="text-center table-dark">
+                            <th scope="col">الرقم التعريفي</th>
+                            <th scope="col">نوع المؤسسة</th>
+                            <th scope="col">المحافظة</th>
+                            <th scope="col">اسم المؤسسة</th>
+                            <th scope="col">رقم الهاتف</th>
+                            <th scope="col">البريد الالكتروني</th>
+                            <th scope="col">الرقم السري</th>
+                            <th scope="col"> تاريخ بدءالاشتراك</th>
+                            <th scope="col"> تاريخ نهايةالاشتراك</th>
+                            <th scope="col">مدة الاشتراك </th>
+                            <th scope="col">السماحية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each allAdmin}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.definthome}}</td>
+                            <td>{{this.governorate}}</td>
+                            <td>{{this.username}}</td>
+                            <td>{{this.phoneadmin}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.password}}</td>
+                            <td>{{this.dateregister}}</td>
+                            <td>{{this.subenddate}}</td>
+                            <td>{{this.subdata}}</td>
+                            {{#if this.permissions}}
+                            <td class="text-primary text-center">نشط</td>
+                            {{else}}
+                            <td class="text-danger text-center">غير نشط</td>
+                            {{/if}}
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <div class=" m-5 text-center">
+                    <h1 class=" p-2 btn btn-warning display-1"> الباقات </h1>
+                </div>
+                <div class="row m-5  ">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="header">
+                                <span class="title text-center text-warning">المكتبات</span>
+                            </div>
+                            <form action="admin/cardlib" method="post">
+                                <label for="oneMontlib" class="input text-warning">باقة شهر</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="number" id="oneMontlib" name="oneMontlib">
+                                <label for="twoMontlib" class="input text-warning">باقة شهرين</label>&nbsp;
+                                <input type="number" id="twoMontlib" name="twoMontlib">
+                                <label for="threeMontlib" class="input text-warning">باقة 3 شهور</label>
+                                <input type="number" id="threeMontlib" name="threeMontlib">
+                                <div class="text-center m-2">
+                                    <button type="submit" class="btn btn-warning ">تعديل</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="header">
+                                <span class="title text-center text-warning">الاكاديميات</span>
+                            </div>
+                            <form action="admin/cardacd" method="post">
+                                <label for="oneMontAcd" class="input text-warning">باقة
+                                    شهر</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="number" id="oneMontAcd" name="oneMontAcd">
+                                <label for="twoMontAcd" class="input text-warning">باقة شهرين</label>&nbsp;
+                                <input type="number" id="twoMontAcd" name="twoMontAcd">
+                                <label for="threeMontAcd" class="input text-warning">باقة 3 شهور</label>
+                                <input type="number" id="threeMontAcd" name="threeMontAcd">
+                                <div class="text-center m-2">
+                                    <button type="submit" class="btn btn-warning ">تعديل</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="header">
+                                <span class="title text-center text-warning">متاجر كتب</span>
+                            </div>
+                            <form action="admin/cardbuy" method="post">
+                                <label for="oneMontlibBuy" class="input text-warning">باقة
+                                    شهر</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="number" id="oneMontlibBuy" name="oneMontlibBuy">
+                                <label for="twoMontlibBuy" class="input text-warning">باقة شهرين</label>&nbsp;
+                                <input type="number" id="twoMontlibBuy" name="twoMontlibBuy">
+                                <label for="threeMontlibBuy" class="input text-warning">باقة 3 شهور</label>
+                                <input type="number" id="threeMontlibBuy" name="threeMontlibBuy">
+                                <div class="text-center m-2">
+                                    <button type="submit" class="btn btn-warning ">تعديل</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="all p-3">
-
-            <table class="table table-bordered border-primary table-light ">
-                <thead >
-                    <tr class="text-center table-dark">
-                        <th scope="col">الرقم التعريفي</th>
-                        <th scope="col">نوع المؤسسة</th>
-                        <th scope="col">المحافظة</th>
-                        <th scope="col">اسم المؤسسة</th>
-                        <th scope="col">رقم الهاتف</th>
-                        <th scope="col">البريد الالكتروني</th>
-                        <th scope="col">الرقم السري</th>
-                        <th scope="col">السماحية</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    {{#each allAdmin}}
-                    <tr>
-                        <td>{{this.id}}</td>
-                        <td>{{this.definthome}}</td>
-                        <td>{{this.governorate}}</td>
-                        <td>{{this.username}}</td>
-                        <td>{{this.phoneadmin}}</td>
-                        <td>{{this.email}}</td>
-                        <td>{{this.password}}</td>
-                        {{#if this.permissions}}
-                        <td class="text-primary text-center">نشط</td>
-                        {{else}}
-                        <td class="text-danger text-center">غير نشط</td>
-                        {{/if}}
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+            {{!-- <div style="margin-top: 3rem;">
+                <div class=" m-5 text-center">
+                    <h1 class=" p-2 btn btn-warning display-1"> تعديل رقم الهاتف </h1>
+                </div>
+                <div class="row m-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <span class="title text-center text-warning">رقم التواصل</span>
+                            </div>
+                            <form action="" method="post" class="text-center">
+                                <input type="text" id="oneMontlib" name="oneMontlib">
+                                <div class="text-center m-2">
+                                    <button type="submit" class="btn btn-warning ">تعديل</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
 
         </div>
     </div>

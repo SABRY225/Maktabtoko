@@ -343,7 +343,7 @@ button {
     left: 50%;
     transform: translate(-50%);
     background-color: rgb(0 0 0 / 65%);
-    height: 238vh;
+    height: 243vh;
 }.all-1{
     width: 100%;
     position: relative;
@@ -1327,6 +1327,12 @@ text-align: center;
     z-index: 100;
 }
 @media (max-width:550px) {
+    .overlay{
+        height: 200vh;
+    }
+    .header_section{
+        height: 200vh;
+    }
     .information_main {
         display: none;
     }

@@ -17,6 +17,10 @@ const orderSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        dateregister: {
+            type: String,
+            required: true,
+        },
     },
     { timestamps: true }
 );

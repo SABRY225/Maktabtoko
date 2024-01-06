@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// const Product = require('../model/Product');
-const { login , createProduct,nopermissions,permissions,deleteproduct} = require('../controllers/auth');
+const { login , createProduct,nopermissions,permissions,deleteproduct,editeCardlib,editeCardacd,editeCardbuy,editeCardPrice} = require('../controllers/auth');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -26,5 +25,11 @@ router.post('/deleting',deleteproduct);
 
 router.post('/nopermissions',nopermissions);
 router.post('/permissions',permissions);
+// edite date cardPrice
+router.post('/cardprice',editeCardPrice);
+router.post('/cardlib',editeCardlib);
+router.post('/cardacd',editeCardacd);
+router.post('/cardbuy',editeCardbuy);
+
 
 module.exports = router;

@@ -43,6 +43,22 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        dateregister: {
+            type: String,
+            required: true,
+        },
+        subdata:{
+            type: Number,
+            required: true,
+        },
+        subenddate:{
+            type: String,
+            required: true,
+        },
+        deliveryservice:{
+            type: String,
+            required: true,
+        }
     },
     { timestamps: true }
 );

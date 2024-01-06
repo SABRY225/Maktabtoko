@@ -59,7 +59,8 @@
                     <div class="col-md-12 ">
                         <form enctype="multipart/form-data" method="post" class="section_form_admin">
                             <div class="mb-3 text-center h4">
-                                <input type="number" name="permissions" class="form-control form-control_1" id="permissions" value="1" style="display: none;">
+                                <input type="number" name="permissions" class="form-control form-control_1"
+                                    id="permissions" value="1" style="display: none;">
                             </div>
                             <div class="mb-3 text-center h4 ">
                                 <label for="definthome" class="form-label text-danger">نوع المؤسسة</label>
@@ -73,18 +74,28 @@
 
                                 </select>
                             </div>
+                            <div class="mb-3 text-center h4 ">
+                                <label for="definthome" class="form-label text-danger"> خدمة التوصيل</label>
+                                <select id="deliveryservice" name="deliveryservice"  
+                                    class="form-control form-control_1">
+                                    <option value="none" hidden=""> خدمة التوصيل </option>
+                                    <option value="توصيل دليفري">توصيل دليفري </option>
+                                    <option value=" لا يوجد خدمة توصيل ">لا يوجد</option>
+                                </select>
+                            </div>
                             <div class="mb-3 text-center h4">
                                 <label for="username" class="form-label text-danger ">الاسم</label>
-                                <input type="text" name="username" class="form-control form-control_1" id="username" required="">
+                                <input type="text" name="username" class="form-control form-control_1" id="username"
+                                    required="">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="phoneadmin" class="form-label text-danger ">رقم الهاتف</label>
-                                <input type="text" name="phoneadmin" class="form-control form-control_1" id="phoneadmin" pattern="[0-9]{11}" minlength="11" maxlength="11"
-                                required="" >
+                                <input type="text" name="phoneadmin" class="form-control form-control_1" id="phoneadmin"
+                                    pattern="[0-9]{11}" minlength="11" maxlength="11" required="">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="governorate" class="form-label text-danger">المحافظة</label>
-                                <select id="governate" id="governorate" name="governorate" 
+                                <select id="governate" id="governorate" name="governorate"
                                     class="form-control form-control_1" required>
                                     <option value="none" hidden=""> المحافظة</option>
                                     <option value="قنا">قنا</option>
@@ -119,25 +130,30 @@
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="exampleInputText2" class="form-label text-danger"> المدينة </label>
-                                <input type="text" name="city" pattern="[\u0600-\u06FF\s]+" class="form-control form-control_1" placeholder="يجب أن يحتوي النص على حروف عربية فقط" id="city">
+                                <input type="text" name="city" pattern="[\u0600-\u06FF\s]+"
+                                    class="form-control form-control_1"
+                                    placeholder="يجب أن يحتوي النص على حروف عربية فقط" id="city">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="address" class="form-label text-danger "> العنوان </label>
-                                <input type="text" name="address" pattern="[\u0600-\u06FF\s]+" class="form-control form-control_1" placeholder="يجب أن يحتوي النص على حروف عربية فقط" id="address" required>
+                                <input type="text" name="address" pattern="[\u0600-\u06FF\s]+"
+                                    class="form-control form-control_1"
+                                    placeholder="يجب أن يحتوي النص على حروف عربية فقط" id="address" required>
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="img" class="form-label text-danger ">صورة المؤسسة</label>
                                 <br>
-                                <input type="file"  class="form-control form-control_1" name="avatar" accept="image/*" />
+                                <input type="file" class="form-control form-control_1" name="avatar" accept="image/*" />
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="email" class="form-label text-danger">البريد الالكتروني</label>
-                                <input class="form-control form-control_1" type="email" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" name="email" required>
+                                <input class="form-control form-control_1" type="email" id="email"
+                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" name="email" required>
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="password" class="form-label text-danger">كلمة المرور</label>
-                                <input class="form-control form-control_1" type="password" id="password"
-                                    name="password" required>
+                                <input class="form-control form-control_1" type="password" id="password" name="password"
+                                    required>
                             </div>
                             <div class="mb-3 text-center h4">
 
