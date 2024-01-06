@@ -1328,10 +1328,10 @@ text-align: center;
 }
 @media (max-width:550px) {
     .overlay{
-        height: 200vh;
+        height: 270vh;
     }
     .header_section{
-        height: 200vh;
+        height: 270vh;
     }
     .information_main {
         display: none;
