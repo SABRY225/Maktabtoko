@@ -32,10 +32,10 @@ router.get('/:id', async(req, res, next) => {
   
   if(admin[0].definthome=='مكتبة')
   {
-    res.render('homelib',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,chunk:product,commint:commint});
+    res.render('homelib',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,deliveryservice:admin[0].deliveryservice,chunk:product,commint:commint});
   }
   else{
-    res.render('homelib2',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,chunk:product,commint:commint});
+    res.render('homelib2',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,deliveryservice:admin[0].deliveryservice,chunk:product,commint:commint});
   }
   
 
