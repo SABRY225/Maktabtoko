@@ -9,13 +9,12 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var homeRouter=require('./routes/home')
 var app = express();
-require('dotenv').config();
-
+require('dotenv').config()
 // db
-const username="maktabtoko", password="UerJhwAzzFINcHIO",pathdb="maktabtoko";
 
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.kwrtl47.mongodb.net/?retryWrites=true&w=majority`)
-.then(() => console.log('Connected!'))
+const DBURL=process.env.URL
+
+mongoose.connect(DBURL).then(() => console.log('Connected!'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

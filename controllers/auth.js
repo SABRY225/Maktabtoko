@@ -7,6 +7,7 @@ const Commint = require('../model/commint');
 const Cardlib = require('../model/cardlib');
 const CardAca = require('../model/cardaca');
 const CardBuy = require('../model/cardbuy');
+require('dotenv').config()
 // const CardPrice = require('../model/cardprice');
 // const accountSid = "AC3a33f665338b9663ab6453bee39891db"
 // const authToken = "89db9236455ecf3cc9edcb9a76d69d9c"
@@ -246,7 +247,7 @@ const login = async (req, res, next) => {
                     }
                 }
             }
-        } else if (email === "maktabtoko@gmail.com" && password === "maktabtoko@#$/*-456") {
+        } else if (email === process.env.EMAIL_COMPANY && password === process.env.PASSWORD_COMPANY) {
             const allAdmin = await Admin.find()
             allAdmin.forEach(admin => {
                 if (admin.dateregister === admin.subenddate) 
