@@ -38,7 +38,7 @@ const registerAdmin = async (req, res, next) => {
         const admin = new Admin({ permissions, definthome, username, phoneadmin, governorate, city, address, avatar, email, password ,dateregister,subdata,subenddate,deliveryservice});
         await admin.save();
         // res.render('finshlogin');
-        res.render('finsh');
+        res.render('finsh')
         // console.log(req);
     } catch (error) {
         next(error);
