@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -67,7 +67,7 @@
         }
 
         .text_done {
-            margin-left: -120px;
+            margin-left: -50px;
             margin-top: 15px;
         }
 
@@ -76,7 +76,7 @@
             float: left;
             background-color: #202020;
             height: auto;
-            margin-top: 40rem;
+            margin-top: 30rem;
             padding-bottom: 90px;
         }
 
@@ -246,6 +246,8 @@
         }
     </style>
 </head>
+
+<body>
     {{!-- nav --}}
     <nav class="navbar navbar-dark  fixed-top header" style=" background-color: #212529;">
         <div class="container-fluid">
@@ -255,21 +257,23 @@
     {{!-- Done --}}
     <section class="home">
         <div class="loading">
-            <img src="/images/error.png" alt="photo" width="150px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124">
+                <circle class="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="hsl(271, 76%, 74%)"
+                    stroke-width="6px"></circle>
+                <circle class="circle" cx="62" cy="62" r="59" fill="none" stroke="hsl(271, 76%, 53%)" stroke-width="6px"
+                    stroke-linecap="round"></circle>
+                <polyline class="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none"
+                    stroke="hsl(271, 76%, 53%)" stroke-width="6px" stroke-linecap="round"></polyline>
+            </svg>
         </div>
         <div class="text_done">
-            <h2> حدث خطا الرجاء أعادة البيانات</h2>
-            <h2 class="text-center">بشكل صحيح</h2>
+            <h2>تمت العملية بنجاح</h2>
         </div>
         {{!-- back --}}
         <div class="btn_main">
-
-            <button onclick="goBack()" class="btn btn-dark">Go Back</button>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
+            <form action="/login">
+            <button class="btn btn-dark">صفحة التسجيل</button>
+            </form>
         </div>
     </section>
 
@@ -341,9 +345,6 @@
         </div>
     </div>
     <!-- copyright section end -->
+</body>
+
 </html>
-
-
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>

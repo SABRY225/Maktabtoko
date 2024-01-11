@@ -21,6 +21,7 @@ router.get('/', async(req, res, next) => {
   const admin_2 = await Admin.find({ definthome:'أكاديمية' })
   const admin_3 = await Admin.find({ definthome:'مكتبة كتب وروايات' })
   res.render('home',{admin_1:admin_1,admin_2:admin_2,admin_3:admin_3});
+  // res.send('Data updated, reload the page');
 });
 router.post('/', searchbar);
 

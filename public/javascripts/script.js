@@ -24,3 +24,12 @@ window.addEventListener('load', function() {
 setInterval(changeBackground, 5000); 
 });
 
+function reloadPage() {
+    location.reload();
+  }
+
+  setInterval(reloadPage, 10000);
+  
+  function reloadPage2() {
+    location.reload();
+  }
