@@ -41,7 +41,8 @@
         section {
             padding: 2rem 5%;
         }
-                .overscrol {
+
+        .overscrol {
             width: auto;
             /* Set a fixed width for the container */
             white-space: nowrap;
@@ -66,6 +67,7 @@
             background-color: rgba(0, 128, 0, 0);
             /* Set track color for Chrome and Safari */
         }
+
         .ss {
             border: 1px solid rgb(243, 235, 235);
             padding: 100px;
@@ -78,8 +80,6 @@
             margin: 50px 10px 10px 10px;
             color: #ffffff;
         }
-
-
     </style>
 </head>
 
@@ -87,7 +87,7 @@
     <!--header section start -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-           <a class="navbar-brand text-start" href="#" style="  color: #ffc107;">مكتبتكو</a>
+            <a class="navbar-brand text-start" href="#" style="  color: #ffc107;">مكتبتكو</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -97,7 +97,8 @@
                 aria-labelledby="offcanvasDarkNavbarLabel">
 
                 <div class="offcanvas-header">
-                    <img src="/images/admin/{{imgadmin}}" alt="photo" style="width: 100px;height: 100px;border-radius: 50%;">
+                    <img src="/images/admin/{{imgadmin}}" alt="photo"
+                        style="width: 100px;height: 100px;border-radius: 50%;">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">{{adminuser}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
@@ -106,7 +107,8 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="#" style="  color: #ffc107;">الصفحة الرئيسية</a>
+                            <a class="nav-link " aria-current="page" href="#" style="  color: #ffc107;">الصفحة
+                                الرئيسية</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/" style="  color: #ffc107;">تسجيل الخروج</a>
@@ -121,127 +123,129 @@
 
     </nav>
     <!--banner section start -->
-    <div class="header_section_5">    
+    <div class="header_section_5">
         <div style="margin-top:0%;" class="add">
-        <div>
-            <br><br><br><br>
-            <button style="position: relative; left: 90%; transform: translate(-50%);" type="button"
-                class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" >
-                انشاء منتج
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title h2" id="exampleModalLabel">اضافة عرض جديد</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div>
+                <br><br><br><br>
+                <button style="position: relative; left: 90%; transform: translate(-50%);" type="button"
+                    class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                    انشاء منتج
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title h2" id="exampleModalLabel">اضافة عرض جديد</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{!-- Form Model --}}
+                                <form action="admin/requsting" enctype="multipart/form-data" method="post">
+                                    <div class="mb-3 text-center h4">
+                                        {{!-- <label for="img" class="form-label text-danger">صورة المؤسسة</label> --}}
+                                        <input type="text" id="idadmin" name="idadmin" value="{{idadmin}}"
+                                            style="display: none;" />
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="img" class="form-label text-danger">صورة المؤسسة</label>
+                                        <input type="file" id="avatar" name="avatar" accept="image/*" required />
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger">اسم المنتج</label>
+                                        <input type="text" name="name" class="form-control" id="name">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger">السعر</label>
+                                        <input type="number" name="price" class="form-control" id="price">
+                                    </div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                    <button type="submit" class="btn btn-primary">حفظ</button>
+                                </form>
+                            </div>
+
                         </div>
-                        <div class="modal-body">
-                            {{!-- Form Model --}}
-                            <form action="admin/requsting" enctype="multipart/form-data" method="post">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="all">
+            <div class="header_section_4">
+                <br><br>
+                <h2 class="h"> المنتجات</h2>
+                <div class="section_0 d-flex overscrol ">
+                    {{#each product}}
+                    <div class="ss">
+                        <div class="text-center">
+                            <img src="/images/product/{{this.avatar}}"
+                                style="width: 150px;height: 150px;border-radius: 50%;">
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-center">{{this.name}}</h3>
+                            <h4 class="text-center text-warning">{{this.price}} &pound;</h4>
+                        </div>
+                        <div class="text-center">
+                            <form action="admin/deleting" method="post">
                                 <div class="mb-3 text-center h4">
-                                    {{!-- <label for="img" class="form-label text-danger">صورة المؤسسة</label> --}}
-                                    <input type="text" id="idadmin" name="idadmin" value="{{idadmin}}"
+                                    <input type="text" id="idadmin" name="idproduct" value="{{this.id}}"
                                         style="display: none;" />
                                 </div>
-                                <div class="mb-3 text-center h4">
-                                    <label for="img" class="form-label text-danger">صورة المؤسسة</label>
-                                    <input type="file" id="avatar" name="avatar" accept="image/*" required />
-                                </div>
-                                <div class="mb-3 text-center h4">
-                                    <label for="username" class="form-label text-danger">اسم المنتج</label>
-                                    <input type="text" name="name" class="form-control" id="name">
-                                </div>
-                                <div class="mb-3 text-center h4">
-                                    <label for="username" class="form-label text-danger">السعر</label>
-                                    <input type="number" name="price" class="form-control" id="price">
-                                </div>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                                <button type="submit" class="btn btn-primary">حفظ</button>
+                                <button type="submit" class="btn btn-danger">حذف المنتج</button>
                             </form>
                         </div>
 
                     </div>
+                    {{/each}}
                 </div>
+
             </div>
-        </div>
-    </div>
-        <div class="all">
+            <!-- -->
             <div class="header_section_4">
-            <br><br>
-            <h2 class="h"> المنتجات</h2>
-            <div class="section_0 d-flex overscrol ">
-                {{#each product}}
-                <div class="ss">
-                    <div class="text-center">
-                        <img src="/images/product/{{this.avatar}}" style="width: 150px;height: 150px;border-radius: 50%;">
-                    </div>
-                    <div class="text-center">
+                <br><br><br>
+                <h2 class="h">طلبات التصوير</h2>
+                <div class="section_0 d-flex overscrol ">
+                    {{#each requsting}}
+                    <div class="ss">
+                        <div class="text-center">
                             <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center text-warning">{{this.price}} &pound;</h4>
-                    </div>
-                    <div class="text-center">
-                        <form action="admin/deleting" method="post">
-                            <div class="mb-3 text-center h4">
-                            <input type="text" id="idadmin" name="idproduct" value="{{this.id}}" style="display: none;" />
-                            </div>
-                            <button type="submit" class="btn btn-danger" >حذف المنتج</button>
-                        </form>
-                    </div>
+                            <h4 class="text-center">{{this.phone}}</h4>
+                            <p class="text-center">{{this.massage}}</p>
+                            <a href="/images/pdf/{{this.filepdf}}">تحميل الملف</a><br><br>
+                            <p class="text-center">{{this.dateregister}}</p>
 
+                        </div>
+
+                    </div>
+                    {{/each}}
                 </div>
-                {{/each}}
-            </div>
 
-        </div>
-    <!-- -->
+            </div>
+            <!-- -->
             <div class="header_section_4">
-            <br><br><br>
-            <h2 class="h">طلبات التصوير</h2>
-            <div class="section_0 d-flex overscrol ">
-                {{#each requsting}}
-                <div class="ss">
-                    <div class="text-center">
-                        <h3 class="text-center">{{this.name}}</h3>
-                        <h4 class="text-center">{{this.phone}}</h4>
-                        <p class="text-center">{{this.massage}}</p>
-                        <a href="/images/pdf/{{this.filepdf}}">تحميل الملف</a><br><br>
-                        <p class="text-center">{{this.dateregister}}</p>
-
+                <br><br>
+                <h2 class="h"> طلبات العروض</h2>
+                <div class="section_0 d-flex overscrol ">
+                    {{#each order}}
+                    <div class="ss">
+                        <div class="text-center">
+                            <h3 class="text-center">{{this.nameOrder}}</h3>
+                            <h4 class="text-center">{{this.phoneOrder}}</h4>
+                            <p class="text-center">{{this.massageOrder}}</p>
+                            <p class="text-center">{{this.dateregister}}</p>
+                        </div>
                     </div>
-
+                    {{/each}}
                 </div>
-                {{/each}}
-            </div>
 
-        </div>
-  <!-- -->  
-            <div class="header_section_4">
-            <br><br>
-            <h2 class="h"> طلبات العروض</h2>
-            <div class="section_0 d-flex overscrol ">
-                {{#each order}}
-                <div class="ss">
-                    <div class="text-center">
-                        <h3 class="text-center">{{this.nameOrder}}</h3>
-                        <h4 class="text-center">{{this.phoneOrder}}</h4>
-                        <p class="text-center">{{this.massageOrder}}</p>
-                        <p class="text-center">{{this.dateregister}}</p>
-                    </div>
-                </div>
-                {{/each}}
             </div>
-
         </div>
-</div>
     </div>
 
     <!-- footer section start -->
-    <div class="footer_section layout_padding" >
+    <div class="footer_section layout_padding">
         <div class="container">
             <div class="text-center ">
                 <div style="padding: 30px;background-color: #FDFEFE;border-radius: 20px;"></div>
@@ -249,11 +253,11 @@
             <div class="footer_section_2">
                 <div class="row">
                     <div class="col-lg-3 margin_top">
-                        <div class="call_text"><a href="#"><img src="images/call-icon1.png"><span
-                                    class="padding_left_15">Call Now +01
-                                    9876543210</span></a></div>
-                        <div class="call_text"><a href="#"><img src="images/mail-icon1.png"><span
-                                    class="padding_left_15">demo@gmail.com</span></a></div>
+                        <div class="call_text"><a href="#"><img src="/images/call-icon1.png"><span
+                                    class="padding_left_15">Call Now
+                                    +201064214425</span></a></div>
+                        <div class="call_text"><a href="#"><img src="/images/mail-icon1.png"><span
+                                    class="padding_left_15">maktabtoko@gmail.com</span></a></div>
                     </div>
                     <div class="col-lg-3">
                         <div class="information_main">
@@ -300,16 +304,19 @@
         </div>
     </div>
     <!-- footer section end -->
-<!-- copyright section start -->
-<div class="copyright_section">
-  <div class="container">
-    <p class="copyright_text">© 2024 All Rights Reserved. <a href="https://www.facebook.com/profile.php?id=100078522217484" target="_blank">CodeCome</a></p>
-  </div>
-</div>
-<!-- copyright section end -->
+    <!-- copyright section start -->
+    <div class="copyright_section">
+        <div class="container">
+            <p class="copyright_text">© 2024 All Rights Reserved. <a
+                    href="https://www.facebook.com/profile.php?id=100078522217484" target="_blank">CodeCome</a></p>
+        </div>
+    </div>
+    <!-- copyright section end -->
     <!-- Javascript files-->
-    {{!-- <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script> --}}
-    {{!-- <script src="/javascripts/script.js"></script> --}}
+    {{!--
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script> --}}
+    {{!--
+    <script src="/javascripts/script.js"></script> --}}
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/popper.min.js"></script>
     <script src="/javascripts/bootstrap.bundle.min.js"></script>
