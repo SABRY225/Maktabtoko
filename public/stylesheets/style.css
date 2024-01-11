@@ -1263,6 +1263,7 @@ text-align: center;
     height: auto;
 }
 
+
 .copyright_text {
     width: 100%;
     float: left;
@@ -1358,7 +1359,7 @@ text-align: center;
         float: left;
         background-image: url(../images/6.jpg);
         background-repeat:repeat ;
-        height: 120vh;
+        height: 200vh;
         background-size: 100%;
     }
     .header{
@@ -1372,9 +1373,9 @@ text-align: center;
 
 @media (max-width:400px) {
     .header_section-2{
-        height: 150vh;
+        height: 175vh 
     }
     .overlay_2 {
-        height: 150vh;
+        height: 175vh 
     }
 }
