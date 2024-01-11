@@ -1,6 +1,8 @@
 // const User = require('../model/User');
 const Admin = require('../model/Admin');
 const Product = require('../model/Product');
+const Productacademic = require('../model/Productacademic');
+const Productbuy = require('../model/Productbuy')
 const Requsting = require('../model/Requsting');
 const Order = require('../model/Order');
 const Commint = require('../model/commint');
@@ -35,7 +37,8 @@ const registerAdmin = async (req, res, next) => {
     try {
         const admin = new Admin({ permissions, definthome, username, phoneadmin, governorate, city, address, avatar, email, password ,dateregister,subdata,subenddate,deliveryservice});
         await admin.save();
-        res.render('finshlogin');
+        // res.render('finshlogin');
+        res.render('finsh');
         // console.log(req);
     } catch (error) {
         next(error);
@@ -49,6 +52,62 @@ const createProduct = async (req, res, next) => {
 
     try {
         const p = new Product({ idname, avatar, name, price });
+        await p.save();
+        res.render('finsh')
+        console.log(req);
+    } catch (error) {
+        next(error);
+    }
+};
+// create a Productacademic
+const createProductacademic = async (req, res, next) => {
+    const { name ,
+        typecourse ,
+        descritioncourse ,
+        beforprice ,
+        afterprice ,
+        desecribationcotach ,
+        notdescriation} = req.body;
+    const idname = req.body.idadmin.toString()
+    const avatar = req.file.originalname
+
+    try {
+        const p = new Productacademic({ 
+            idname, 
+            avatar, 
+            name,
+            typecourse ,
+            descritioncourse ,
+            beforprice ,
+            afterprice ,
+            desecribationcotach ,
+            notdescriation});
+        await p.save();
+        res.render('finsh')
+        console.log(req);
+    } catch (error) {
+        next(error);
+    }
+};
+// create a Productacademic
+const createProductbuy = async (req, res, next) => {
+    const { name ,
+        beforprice ,
+        afterprice ,
+        desecribationcotach ,
+        notdescriation} = req.body;
+    const idname = req.body.idadmin.toString()
+    const avatar = req.file.originalname
+
+    try {
+        const p = new Productbuy({ 
+            idname, 
+            avatar, 
+            name,
+            beforprice ,
+            afterprice ,
+            desecribationcotach ,
+            notdescriation});
         await p.save();
         res.render('finsh')
         console.log(req);
@@ -164,6 +223,28 @@ const deleteproduct = async (req, res, next) => {
     }
 
 };
+const deleteproductacademy =async (req, res, next) => {
+    const ID = req.body.idproduct;
+    try {
+        await Productacademic.deleteOne({ _id: ID })
+        res.render('finsh');
+        console.log(req);
+    } catch (error) {
+        next(error);
+    }
+
+};
+const deleteproductbuy = async (req, res, next) => {
+    const ID = req.body.idproduct;
+    try {
+        await Productbuy.deleteOne({ _id: ID })
+        res.render('finsh');
+        console.log(req);
+    } catch (error) {
+        next(error);
+    }
+
+};
 
 //create edite card price lib
 const editeCardlib = async (req, res, next) => {
@@ -238,12 +319,17 @@ const login = async (req, res, next) => {
                     res.render("permissions")
                 } else {
                     const product = await Product.find({ idname: admin.id })
+                    const productacademic = await Productacademic.find({ idname: admin.id })
+                    const productbuy = await Productbuy.find({ idname: admin.id })
                     const requsting = await Requsting.find({ idname: admin.id })
                     const order = await Order.find({ idname: admin.id })
                     if (admin.definthome === "مكتبة") {
                         res.render("admindeshbord", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: product, requsting: requsting, order: order });
-                    } else {
-                        res.render("admindeshbord_2", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: product, order: order });
+                    }else if(admin.definthome === "أكاديمية") {
+                        res.render("admindeshbord_2", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: productacademic, order: order });
+                    }
+                    else {
+                        res.render("admindeshbord_3", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: productbuy, order: order });
                     }
                 }
             }
@@ -266,4 +352,4 @@ const login = async (req, res, next) => {
 };
 
 
-module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice};
+module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice,createProductacademic,deleteproductacademy,createProductbuy,deleteproductbuy};

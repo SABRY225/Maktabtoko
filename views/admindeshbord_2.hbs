@@ -44,6 +44,7 @@
 
         .overscrol {
             width: auto;
+            height: auto;
             /* Set a fixed width for the container */
             white-space: nowrap;
             overflow: auto;
@@ -52,7 +53,6 @@
 
         .overscrol::-webkit-scrollbar {
             width: 2px;
-
         }
 
         .overscrol::-webkit-scrollbar-thumb {
@@ -70,7 +70,7 @@
 
         .ss {
             border: 1px solid rgb(243, 235, 235);
-            padding: 100px;
+            padding: 50px;
 
             z-index: 101;
             background-color: rgba(216, 216, 216, 0.263);
@@ -79,7 +79,40 @@
             border-radius: 10px;
             margin: 50px 10px 10px 10px;
             color: #ffffff;
+            {{!-- max-height: 650px; --}}
+            {{!-- overflow-y: auto; --}}
+            
+            
         }
+        .inputs-details h3,.inputs-details h4{
+            border: 2px solid rgba(255, 255, 255, 0.447);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            max-width: 300px;
+            white-space: normal;
+            overflow-wrap: break-word;
+            max-height: 80px;
+            overflow-y: auto;
+        }
+        .overscoinput::-webkit-scrollbar {
+            width: 8px;
+        }
+        .overscoinput::-webkit-scrollbar-thumb {
+
+            border-radius: 10px;
+            background-color: #d4af37;
+            /* Set thumb color for Chrome and Safari */
+        }
+        .overscoinput::-webkit-scrollbar-track {
+            width: 2px;
+            background-color: rgba(0, 128, 0, 0);
+            /* Set track color for Chrome and Safari */
+        }
+       .header_section_4_1{
+        margin-top: 50px;
+       }
     </style>
 </head>
 
@@ -127,7 +160,7 @@
         <div style="margin-top:0%;" class="add">
             <div>
                 <br><br><br><br>
-                <button style="position: relative; left: 90%; transform: translate(-50%);" type="button"
+                <button style="position: relative; left: 80%; transform: translate(-50%);" type="button"
                     class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                     انشاء منتج
                 </button>
@@ -144,22 +177,44 @@
                             </div>
                             <div class="modal-body">
                                 {{!-- Form Model --}}
-                                <form action="admin/requsting" enctype="multipart/form-data" method="post">
+                                <form action="admin/requsting_1" enctype="multipart/form-data" method="post">
                                     <div class="mb-3 text-center h4">
                                         <input type="text" id="idadmin" name="idadmin" value="{{idadmin}}"
                                             style="display: none;" />
                                     </div>
                                     <div class="mb-3 text-center h4">
                                         <label for="img" class="form-label text-danger">صورة المؤسسة</label>
-                                        <input type="file" id="avatar" name="avatar" accept="image/*" required />
+                                        <input type="file" id="avatar" class="form-control" name="avatar" accept="image/*" required />
                                     </div>
                                     <div class="mb-3 text-center h4">
-                                        <label for="username" class="form-label text-danger">اسم المنتج</label>
+                                        <label for="username" class="form-label text-danger">اسم الكورس</label>
                                         <input type="text" name="name" class="form-control" id="name">
                                     </div>
                                     <div class="mb-3 text-center h4">
-                                        <label for="username" class="form-label text-danger">السعر</label>
-                                        <input type="number" name="price" class="form-control" id="price">
+                                        <label for="username" class="form-label text-danger" >نوعية الكورس</label>
+                                        <input type="text" name="typecourse" class="form-control" placeholder="الرجاء تحديد اذا كان التدريب اونلاين او افلاين">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger">محتويات الكورس</label>
+                                        <input type="text" name="descritioncourse" class="form-control" id="name">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger"> سعر الكورس قبل
+                                            الخصم</label>
+                                        <input type="text" name="beforprice" class="form-control" id="beforprice">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger"> سعر الكورس بعد
+                                            الخصم</label>
+                                        <input type="text" name="afterprice" class="form-control" id="afterprice">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger"> السيرة الذاتية للمدرب</label>
+                                        <input type="text" name="desecribationcotach" class="form-control" id="desecribationcotach">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger"> ملاحظة </label>
+                                        <input type="text" name="notdescriation" class="form-control" id="notdescriation">
                                     </div>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
                                     <button type="submit" class="btn btn-primary">حفظ</button>
@@ -172,22 +227,26 @@
             </div>
         </div>
         <div class="all">
-            <div class="header_section_4">
+            <div class="header_section_4 overscrol">
                 <br><br>
                 <h2 class="h"> المنتجات</h2>
-                <div class="section_0 d-flex overscrol ">
+                <div class="section_0 d-flex  ">
                     {{#each product}}
                     <div class="ss">
                         <div class="text-center">
                             <img src="/images/product/{{this.avatar}}"
                                 style="width: 150px;height: 150px;border-radius: 50%;">
                         </div>
-                        <div class="text-center">
+                        <div class="text-center inputs-details">
                             <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center text-warning">{{this.price}} &pound;</h4>
+                            <h4 class="text-center text-warning"> <span class="text-danger"><del>{{this.beforprice}} &pound;</del> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{this.afterprice}} &pound;</h4>
+                            <h4 class="text-center text-warning">{{this.typecourse}} </h4>
+                            <h4 class="text-center text-warning overscoinput">{{this.descritioncourse}} </h4>
+                            <h4 class="text-center text-warning overscoinput">{{this.desecribationcotach}} </h4>
+                            <h4 class="text-center text-warning overscoinput">{{this.notdescriation}} </h4>
                         </div>
                         <div class="text-center">
-                            <form action="admin/deleting" method="post">
+                            <form action="admin/deleting_1" method="post">
                                 <div class="mb-3 text-center h4">
                                     <input type="text" id="idadmin" name="idproduct" value="{{this.id}}"
                                         style="display: none;" />
@@ -201,7 +260,7 @@
 
             </div>
             <!-- -->
-            <div class="header_section_4">
+            <div class="header_section_4 header_section_4_1">
                 <br><br>
                 <h2 class="h"> طلبات العروض</h2>
                 <div class="section_0 d-flex overscrol ">
