@@ -28,8 +28,8 @@ function reloadPage() {
     location.reload();
   }
 
-  setInterval(reloadPage, 10000);
-  
+  setInterval(reloadPage, 120000);
+
   function reloadPage2() {
     location.reload();
   }
