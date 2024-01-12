@@ -19,7 +19,7 @@ require('dotenv').config()
 
 // Register a new admin
 const registerAdmin = async (req, res, next) => {
-    const { permissions, definthome, username, phoneadmin, governorate, city, address, email, password ,deliveryservice} = req.body;
+    const { permissions, definthome,deliveryservice, username, phoneadmin, governorate, city, address, email, password} = req.body;
     const avatar = req.file.originalname
     const currentDate = new Date();
     const dateregister =currentDate.toISOString().split('T')[0]
@@ -37,9 +37,8 @@ const registerAdmin = async (req, res, next) => {
     try {
         const admin = new Admin({ permissions, definthome, username, phoneadmin, governorate, city, address, avatar, email, password ,dateregister,subdata,subenddate,deliveryservice});
         await admin.save();
-        // res.render('finshlogin');
         res.render('finsh')
-        // console.log(req);
+        console.log(req);
     } catch (error) {
         next(error);
     }
