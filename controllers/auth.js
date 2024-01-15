@@ -368,6 +368,18 @@ const editeCardPrice = async (req, res, next) => {
         next(error);
     }
 };
+
+// deleteadmin
+const deleteadmin = async (req, res, next) => {
+    const ID = req.body.idadmin;
+    try {
+        await Admin.deleteOne({ _id: ID });
+        res.render('finsh')
+        
+    } catch (err) {
+        console.log(err);
+    }
+};
 // Send OTP
 // verify OTP
 // Login with an existing user
@@ -425,4 +437,4 @@ const giveCurrentDateTime = () => {
     const dateTime = date + ' ' + time;
     return dateTime;
 }
-module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice,createProductacademic,deleteproductacademy,createProductbuy,deleteproductbuy};
+module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice,createProductacademic,deleteproductacademy,createProductbuy,deleteproductbuy,deleteadmin};

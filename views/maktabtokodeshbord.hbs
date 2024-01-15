@@ -137,18 +137,23 @@
             <div>
                 <br><br><br><br>
                 <button style="position: relative; left: 90%; transform: translate(-50%);" type="button"
-                    class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
                     قيد السماحية
                 </button>
-                <button style="position: relative; left: 40%; transform: translate(-50%);" type="button"
+                <button style="position: relative; left: 60%; transform: translate(-50%);" type="button"
                     class="btn btn-warning" data-toggle="modal" data-target="#exampleModal-3">
                     تجديد الباقة
                 </button>
-                <button style="position: relative; left: -5%; transform: translate(-50%);" type="button"
+                <button style="position: relative; left: 10%; transform: translate(-50%);" type="button"
+                    class="btn btn-danger" data-toggle="modal" data-target="#exampleModal-4">
+                    ازالة عميل
+                </button>
+                <button style="position: relative; left: -15%; transform: translate(-50%);" type="button"
                     class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2">
                     السماحية
                 </button>
                 <!-- Modal -->
+                {{!-- قيد السماحية --}}
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -166,13 +171,14 @@
                                         <label for="permissions" class="form-label text-danger"> الرقم التعريفي</label>
                                         <input type="text" name="permissions" class="form-control" id="permissions">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">ارسال</button>
+                                    <button type="submit" class="btn btn-secondary">قيد</button>
                                 </form>
                             </div>
 
                         </div>
                     </div>
                 </div>
+                {{!--  السماحية --}}
                 <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -196,7 +202,7 @@
                         </div>
                     </div>
                 </div>
-
+                {{!--  تجديد الباقة --}}
                 <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel-3" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -217,7 +223,31 @@
                                         <input class="form-control" type="number" name="numberOfDays" id="numberOfDays">
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary">ارسال</button>
+                                    <button type="submit" class="btn btn-warning">تجديد</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {{!--   ازالة عميل  --}}
+                <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel-4" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title h2" id="exampleModalLabel-4"> ازالة عميل </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{!-- Form Model --}}
+                                <form action="admin/deleteadmin" method="post">
+                                    <div class="mb-3 text-center h4">
+                                        <label for="permissions" class="form-label text-danger"> الرقم التعريفي</label>
+                                        <input type="text" name="idadmin" class="form-control" id="idadmin">
+                                    </div>
+                                    <button type="submit" class="btn btn-danger">حذف</button>
                                 </form>
                             </div>
                         </div>
