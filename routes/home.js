@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + file.originalname);
     }
 });
-const upload = multer({ storage:multer.memoryStorage()  });
+const upload = multer({ storage:multer.memoryStorage() });
 
 /* GET home page. */
 router.get('/', async(req, res, next) => {
