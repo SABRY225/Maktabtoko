@@ -15,8 +15,16 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        price:{
-            type: Number,
+        beforprice:{
+            type: String,
+            required: true,
+        },
+        afterprice:{
+            type: String,
+            required: true,
+        },
+        descrabationproduct:{
+            type: String,
             required: true,
         },
     },

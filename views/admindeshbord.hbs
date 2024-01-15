@@ -70,7 +70,7 @@
 
         .ss {
             border: 1px solid rgb(243, 235, 235);
-            padding: 100px;
+            padding: 50px;
 
             z-index: 101;
             background-color: rgba(216, 216, 216, 0.263);
@@ -79,6 +79,41 @@
             border-radius: 10px;
             margin: 50px 10px 10px 10px;
             color: #ffffff;
+        }
+        .inputs-details h3,.inputs-details h4{
+            border: 2px solid rgba(255, 255, 255, 0.447);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            max-width: 300px;
+            white-space: normal;
+            overflow-wrap: break-word;
+            max-height: 80px;
+            overflow-y: auto;
+        }
+        .overscoinput::-webkit-scrollbar {
+            width: 8px;
+        }
+        .overscoinput::-webkit-scrollbar-thumb {
+
+            border-radius: 10px;
+            background-color: #d4af37;
+            /* Set thumb color for Chrome and Safari */
+        }
+        .overscoinput::-webkit-scrollbar-track {
+            width: 2px;
+            background-color: rgba(0, 128, 0, 0);
+            /* Set track color for Chrome and Safari */
+        }
+        .header_section_4_1{
+        margin-top: 150px;
+        }
+        .header_section_4_2{
+        margin-top: 70px;
+        }
+        .header_section_5,.all{
+            height: 320vh;
         }
     </style>
 </head>
@@ -97,7 +132,7 @@
                 aria-labelledby="offcanvasDarkNavbarLabel">
 
                 <div class="offcanvas-header">
-                    <img src="/images/admin/{{imgadmin}}" alt="photo"
+                    <img src="{{imgadmin}}" alt="photo"
                         style="width: 100px;height: 100px;border-radius: 50%;">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">{{adminuser}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
@@ -152,15 +187,26 @@
                                     </div>
                                     <div class="mb-3 text-center h4">
                                         <label for="img" class="form-label text-danger">صورة المؤسسة</label>
-                                        <input type="file" id="avatar" name="avatar" accept="image/*" required />
+                                        <input type="file" id="avatar" name="avatar" accept="image/*" class="form-control" />
                                     </div>
                                     <div class="mb-3 text-center h4">
                                         <label for="username" class="form-label text-danger">اسم المنتج</label>
                                         <input type="text" name="name" class="form-control" id="name">
                                     </div>
                                     <div class="mb-3 text-center h4">
-                                        <label for="username" class="form-label text-danger">السعر</label>
-                                        <input type="number" name="price" class="form-control" id="price">
+                                        <label for="beforprice" class="form-label text-danger"> سعر المنتج قبل
+                                            الخصم</label>
+                                        <input type="text" name="beforprice" class="form-control" id="beforprice">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="afterprice" class="form-label text-danger"> سعر المنتج بعد
+                                            الخصم</label>
+                                        <input type="text" name="afterprice" class="form-control" id="afterprice">
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="username" class="form-label text-danger">تفاصيل المنتج
+                                            </label>
+                                        <input type="text" name="descrabationproduct" class="form-control" id="descrabationproduct">
                                     </div>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
                                     <button type="submit" class="btn btn-primary">حفظ</button>
@@ -180,12 +226,13 @@
                     {{#each product}}
                     <div class="ss">
                         <div class="text-center">
-                            <img src="/images/product/{{this.avatar}}"
+                            <img src="{{this.avatar}}"
                                 style="width: 150px;height: 150px;border-radius: 50%;">
                         </div>
-                        <div class="text-center">
+                        <div class="text-center inputs-details">
                             <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center text-warning">{{this.price}} &pound;</h4>
+                            <h4 class="text-center text-warning"> <span class="text-danger"><del>{{this.beforprice}} &pound;</del> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{this.afterprice}} &pound;</h4>
+                            <h4 class="text-center text-warning overscoinput">{{this.descrabationproduct}} </h4>
                         </div>
                         <div class="text-center">
                             <form action="admin/deleting" method="post">
@@ -196,25 +243,25 @@
                                 <button type="submit" class="btn btn-danger">حذف المنتج</button>
                             </form>
                         </div>
-
                     </div>
                     {{/each}}
                 </div>
 
             </div>
             <!-- -->
-            <div class="header_section_4">
+            <div class="header_section_4 header_section_4_1">
                 <br><br><br>
                 <h2 class="h">طلبات التصوير</h2>
                 <div class="section_0 d-flex overscrol ">
                     {{#each requsting}}
                     <div class="ss">
-                        <div class="text-center">
-                            <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center">{{this.phone}}</h4>
-                            <p class="text-center">{{this.massage}}</p>
-                            <a href="/images/pdf/{{this.filepdf}}">تحميل الملف</a><br><br>
-                            <p class="text-center">{{this.dateregister}}</p>
+                        <div class="text-center inputs-details">
+                            <h3 class="text-center text-warning">{{this.name}}</h3>
+                            <h4 class="text-center text-warning">{{this.phone}}</h4>
+                            <h4 class="text-center overscoinput text-warning">{{this.massage}}</h4>
+                            <h4><a href="{{this.filepdf}}">اضغط هنا لتحميل الملف</a></h4>
+                            <span >تاريخ الطلب</span> 
+                            <h4 class="text-center text-warning">{{this.dateregister}}</h4>
 
                         </div>
 
@@ -224,17 +271,18 @@
 
             </div>
             <!-- -->
-            <div class="header_section_4">
+            <div class="header_section_4 header_section_4_2">
                 <br><br>
                 <h2 class="h"> طلبات العروض</h2>
                 <div class="section_0 d-flex overscrol ">
                     {{#each order}}
                     <div class="ss">
-                        <div class="text-center">
-                            <h3 class="text-center">{{this.nameOrder}}</h3>
-                            <h4 class="text-center">{{this.phoneOrder}}</h4>
-                            <p class="text-center">{{this.massageOrder}}</p>
-                            <p class="text-center">{{this.dateregister}}</p>
+                        <div class="text-center inputs-details">
+                            <h3 class="text-center text-warning">{{this.nameOrder}}</h3>
+                            <h4 class="text-center text-warning">{{this.phoneOrder}}</h4>
+                            <h4 class="text-center overscoinput text-warning">{{this.massageOrder}}</h4>
+                            <span >تاريخ الطلب</span> 
+                            <h4 class="text-center text-warning">{{this.dateregister}}</h4>
                         </div>
                     </div>
                     {{/each}}

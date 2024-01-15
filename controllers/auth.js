@@ -10,17 +10,21 @@ const Cardlib = require('../model/cardlib');
 const CardAca = require('../model/cardaca');
 const CardBuy = require('../model/cardbuy');
 require('dotenv').config()
-// const CardPrice = require('../model/cardprice');
-// const accountSid = "AC3a33f665338b9663ab6453bee39891db"
-// const authToken = "89db9236455ecf3cc9edcb9a76d69d9c"
-// const verifySid = "VAb05b8ec5799751bdab11878886c5843b"
-// const twilio = require('twilio');
-// const client = twilio(accountSid, authToken)
+
+const {initializeApp}=require('firebase/app')
+const { getStorage, ref, getDownloadURL, uploadBytesResumable ,uploadBytes}=require('firebase/storage')
+// import {initializeApp} from "firebase/app"
+// import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+const {firebaseConfig}=require('../firebase/firedata')
+// import config from "../firebase/firedata"
+//Initialize a firebase application
+const app=initializeApp(firebaseConfig);
+// Initialize Cloud Storage and get a reference to the service
+const storage = getStorage(app);
 
 // Register a new admin
 const registerAdmin = async (req, res, next) => {
     const { permissions, definthome,deliveryservice, username, phoneadmin, governorate, city, address, email, password} = req.body;
-    const avatar = req.file.originalname
     const currentDate = new Date();
     const dateregister =currentDate.toISOString().split('T')[0]
     let subdata
@@ -34,23 +38,52 @@ const registerAdmin = async (req, res, next) => {
         currentDate.setDate(currentDate.getDate() + 21);
         subenddate =currentDate.toISOString().split('T')[0]
     }
+    const dateTime = giveCurrentDateTime();
+
+    const storageRef = ref(storage, `admins/${req.file.originalname + "       " + dateTime}`);
+
+    // Create file metadata including the content type
+    const metadata = {
+        contentType: req.file.mimetype,
+    };
+
+    // Upload the file in the bucket storage
+    const snapshot = await uploadBytes(storageRef, req.file.buffer, metadata);
+    //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
+
+    // Grab the public url
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    const avatar = downloadURL
     try {
         const admin = new Admin({ permissions, definthome, username, phoneadmin, governorate, city, address, avatar, email, password ,dateregister,subdata,subenddate,deliveryservice});
         await admin.save();
         res.render('finsh')
-        console.log(req);
     } catch (error) {
         next(error);
     }
 };
 // create a new Product
 const createProduct = async (req, res, next) => {
-    const { name, price } = req.body;
+    const { name, beforprice,afterprice ,descrabationproduct } = req.body;
     const idname = req.body.idadmin.toString()
-    const avatar = req.file.originalname
+    const dateTime = giveCurrentDateTime();
 
+    const storageRef = ref(storage, `product/${req.file.originalname + "       " + dateTime}`);
+
+    // Create file metadata including the content type
+    const metadata = {
+        contentType: req.file.mimetype,
+    };
+
+    // Upload the file in the bucket storage
+    const snapshot = await uploadBytes(storageRef, req.file.buffer, metadata);
+    //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
+
+    // Grab the public url
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    const avatar = downloadURL
     try {
-        const p = new Product({ idname, avatar, name, price });
+        const p = new Product({ idname, avatar, name, beforprice,afterprice ,descrabationproduct });
         await p.save();
         res.render('finsh')
         console.log(req);
@@ -68,7 +101,23 @@ const createProductacademic = async (req, res, next) => {
         desecribationcotach ,
         notdescriation} = req.body;
     const idname = req.body.idadmin.toString()
-    const avatar = req.file.originalname
+    
+    const dateTime = giveCurrentDateTime();
+
+    const storageRef = ref(storage, `product/${req.file.originalname + "       " + dateTime}`);
+
+    // Create file metadata including the content type
+    const metadata = {
+        contentType: req.file.mimetype,
+    };
+
+    // Upload the file in the bucket storage
+    const snapshot = await uploadBytes(storageRef, req.file.buffer, metadata);
+    //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
+
+    // Grab the public url
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    const avatar = downloadURL
 
     try {
         const p = new Productacademic({ 
@@ -96,7 +145,22 @@ const createProductbuy = async (req, res, next) => {
         desecribationcotach ,
         notdescriation} = req.body;
     const idname = req.body.idadmin.toString()
-    const avatar = req.file.originalname
+    const dateTime = giveCurrentDateTime();
+
+    const storageRef = ref(storage, `product/${req.file.originalname + "       " + dateTime}`);
+
+    // Create file metadata including the content type
+    const metadata = {
+        contentType: req.file.mimetype,
+    };
+
+    // Upload the file in the bucket storage
+    const snapshot = await uploadBytes(storageRef, req.file.buffer, metadata);
+    //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
+
+    // Grab the public url
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    const avatar = downloadURL
 
     try {
         const p = new Productbuy({ 
@@ -118,17 +182,33 @@ const createProductbuy = async (req, res, next) => {
 const createRequsting = async (req, res, next) => {
     const { name, phone, massage } = req.body;
     const idname = req.params.id
-    const filepdf = req.file.originalname
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const day = currentDate.getDate();
     const dateregister =`${year}-${month + 1}-${day}`
+    const dateTime = giveCurrentDateTime();
+
+    const storageRef = ref(storage, `pdf/${req.file.originalname + "       " + dateTime}`);
+
+    // Create file metadata including the content type
+    const metadata = {
+        contentType: req.file.mimetype,
+    };
+
+    // Upload the file in the bucket storage
+    const snapshot = await uploadBytes(storageRef, req.file.buffer, metadata);
+    //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
+
+    // Grab the public url
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    const filepdf = downloadURL
+    
     try {
         const R = new Requsting({ idname, name, phone, filepdf, massage,dateregister });
         await R.save();
         console.log(R);
-        req.render('finsh');
+        res.render('finsh')
     } catch (error) {
         next(error);
     }
@@ -337,5 +417,12 @@ const login = async (req, res, next) => {
     }
 };
 
-
+// time product
+const giveCurrentDateTime = () => {
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateTime = date + ' ' + time;
+    return dateTime;
+}
 module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice,createProductacademic,deleteproductacademy,createProductbuy,deleteproductbuy};

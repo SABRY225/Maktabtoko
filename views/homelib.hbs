@@ -80,7 +80,32 @@
             margin: 50px 10px 10px 10px;
             color: #ffffff;
         }
+        .inputs-details h3,.inputs-details h4{
+            border: 2px solid rgba(255, 255, 255, 0.447);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            max-width: 300px;
+            white-space: normal;
+            overflow-wrap: break-word;
+            max-height: 80px;
+            overflow-y: auto;
+        }
+        .overscoinput::-webkit-scrollbar {
+            width: 8px;
+        }
+        .overscoinput::-webkit-scrollbar-thumb {
 
+            border-radius: 10px;
+            background-color: #d4af37;
+            /* Set thumb color for Chrome and Safari */
+        }
+        .overscoinput::-webkit-scrollbar-track {
+            width: 2px;
+            background-color: rgba(0, 128, 0, 0);
+            /* Set track color for Chrome and Safari */
+        }
         .btn {
             display: block;
             padding: 0.7em 1em;
@@ -115,7 +140,7 @@
         <div class="all-1">
             <div class="profile_picture">
 
-                <img src="/images/admin/{{this.avatar}}">
+                <img src="{{this.avatar}}">
                 <h2>{{this.username}}</h2>
                 <div class="h5">
                     <span>{{this.governorate}} - </span>
@@ -149,12 +174,13 @@
                     {{#each chunk}}
                     <div class="ss">
                         <div class="text-center">
-                            <img src="/images/product/{{this.avatar}}"
+                            <img src="{{this.avatar}}"
                                 style="width: 150px;height: 150px;border-radius: 50%;">
                         </div>
-                        <div class="text-center">
+                        <div class="text-center inputs-details">
                             <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center text-warning">{{this.price}} &pound;</h4>
+                            <h4 class="text-center text-warning"> <span class="text-danger"><del>{{this.beforprice}} &pound;</del> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{this.afterprice}} &pound;</h4>
+                            <h4 class="text-center text-warning overscoinput">{{this.descrabationproduct}} </h4>
                         </div>
                     </div>
                     {{/each}}

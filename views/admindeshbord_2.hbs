@@ -130,7 +130,7 @@
                 aria-labelledby="offcanvasDarkNavbarLabel">
 
                 <div class="offcanvas-header">
-                    <img src="/images/admin/{{imgadmin}}" alt="photo"
+                    <img src="{{imgadmin}}" alt="photo"
                         style="width: 100px;height: 100px;border-radius: 50%;">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">{{adminuser}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
@@ -234,7 +234,7 @@
                     {{#each product}}
                     <div class="ss">
                         <div class="text-center">
-                            <img src="/images/product/{{this.avatar}}"
+                            <img src="{{this.avatar}}"
                                 style="width: 150px;height: 150px;border-radius: 50%;">
                         </div>
                         <div class="text-center inputs-details">
@@ -266,13 +266,13 @@
                 <div class="section_0 d-flex overscrol ">
                     {{#each order}}
                     <div class="ss">
-                        <div class="text-center">
-                            <h3 class="text-center">{{this.nameOrder}}</h3>
-                            <h4 class="text-center">{{this.phoneOrder}}</h4>
-                            <p class="text-center">{{this.massageOrder}}</p>
-                            <p class="text-center">{{this.dateregister}}</p>
+                        <div class="text-center inputs-details">
+                            <h3 class="text-center text-warning">{{this.nameOrder}}</h3>
+                            <h4 class="text-center text-warning">{{this.phoneOrder}}</h4>
+                            <h4 class="text-center overscoinput text-warning">{{this.massageOrder}}</h4>
+                            <span >تاريخ الطلب</span> 
+                            <h4 class="text-center text-warning">{{this.dateregister}}</h4>
                         </div>
-
                     </div>
                     {{/each}}
                 </div>

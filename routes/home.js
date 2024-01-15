@@ -10,10 +10,10 @@ const storage = multer.diskStorage({
         cb(null,'public/images/pdf');
     },
     filename: (req, file, cb) => {
-        cb(null,file.originalname);
+        cb(null, Date.now() + file.originalname);
     }
 });
-const upload = multer({ storage });
+const upload = multer({ storage:multer.memoryStorage()  });
 
 /* GET home page. */
 router.get('/', async(req, res, next) => {

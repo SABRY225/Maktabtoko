@@ -7,11 +7,11 @@ const storage = multer.diskStorage({
         cb(null,'public/images/product');
     },
     filename: (req, file, cb) => {
-        cb(null,file.originalname);
+        cb(null, Date.now() + file.originalname);
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({storage:multer.memoryStorage()  });
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
