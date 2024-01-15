@@ -124,23 +124,10 @@ const createRequsting = async (req, res, next) => {
     const month = currentDate.getMonth();
     const day = currentDate.getDate();
     const dateregister =`${year}-${month + 1}-${day}`
-
     try {
         const R = new Requsting({ idname, name, phone, filepdf, massage,dateregister });
         await R.save();
-        // // Send OTP
-        // let digits = "0123456789"
-        // OTP = "";
-        // for (let i = 0; i < 4; i++) {
-        //     OTP += digits[Math.floor(Math.random() * 10)];
-        // }
-        // const responsephone = await client.messages
-        //     .create({
-        //         body: `Your otp verification for user `,
-        //         from: '+201122656639', // Replace with your Messaging Service SID
-        //         to: `+2${phone}`,
-        //     })
-        // console.log(responsephone);
+        console.log(R);
         req.render('finsh');
     } catch (error) {
         next(error);
