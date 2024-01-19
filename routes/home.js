@@ -49,19 +49,16 @@ router.get('/:id', async(req, res, next) => {
 });
 // 1
 router.get('/:id/upload',async(req, res, next) => {
-  console.log(req.params.id);
   res.render('upload')
 })
 router.post('/:id/upload',createRequsting_2)
 //2
 router.get('/:id/upload1',async(req, res, next) => {
-  console.log(req.params.id);
   res.render('upload1')
 })
 router.post('/:id/upload1',upload.single('filepdf'),createRequsting)
 // 3
 router.get('/:id/upload2',async(req, res, next) => {
-  console.log(req.params.id);
   res.render('upload2')
 })
 router.post('/:id/upload2',createRequsting_3)

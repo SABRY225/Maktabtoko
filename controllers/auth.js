@@ -86,7 +86,6 @@ const createProduct = async (req, res, next) => {
         const p = new Product({ idname, avatar, name, beforprice,afterprice ,descrabationproduct });
         await p.save();
         res.render('finsh')
-        console.log(req);
     } catch (error) {
         next(error);
     }
@@ -132,7 +131,6 @@ const createProductacademic = async (req, res, next) => {
             notdescriation});
         await p.save();
         res.render('finsh')
-        console.log(req);
     } catch (error) {
         next(error);
     }
@@ -173,7 +171,6 @@ const createProductbuy = async (req, res, next) => {
             notdescriation});
         await p.save();
         res.render('finsh')
-        console.log(req);
     } catch (error) {
         next(error);
     }
@@ -207,7 +204,6 @@ const createRequsting = async (req, res, next) => {
     try {
         const R = new Requsting({ idname, name, phone, filepdf, massage,dateregister });
         await R.save();
-        console.log(R);
         res.render('finsh')
     } catch (error) {
         next(error);
@@ -217,7 +213,6 @@ const createRequsting = async (req, res, next) => {
 const createRequsting_2 = async (req, res, next) => {
     const { nameOrder, phoneOrder, massageOrder } = req.body;
     const idname = req.params.id
-    console.log(req);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -235,8 +230,6 @@ const createRequsting_2 = async (req, res, next) => {
 const createRequsting_3 = async (req, res, next) => {
     const { namecommint, massagecommint } = req.body;
     const idname = req.params.id
-    console.log(req);
-
     try {
         const commint = new Commint({ idname, namecommint, massagecommint });
         await commint.save();
@@ -249,15 +242,10 @@ const createRequsting_3 = async (req, res, next) => {
 const searchbar = async (req, res, next) => {
     const { searchname } = req.body;
     const admin = await Admin.find({ username: searchname });
-    console.log(searchname);
-
     if (admin.length > 0) {
         res.render("search", { admin: admin });
-        console.log('1');
     } else {
         res.render("nosearch", { searchname });
-        console.log('0');
-
     }
 };
 const nopermissions = async (req, res, next) => {
@@ -283,7 +271,6 @@ const deleteproduct = async (req, res, next) => {
     try {
         await Product.deleteOne({ _id: ID })
         res.render('finsh');
-        console.log(req);
     } catch (error) {
         next(error);
     }
@@ -294,7 +281,6 @@ const deleteproductacademy =async (req, res, next) => {
     try {
         await Productacademic.deleteOne({ _id: ID })
         res.render('finsh');
-        console.log(req);
     } catch (error) {
         next(error);
     }
@@ -305,7 +291,6 @@ const deleteproductbuy = async (req, res, next) => {
     try {
         await Productbuy.deleteOne({ _id: ID })
         res.render('finsh');
-        console.log(req);
     } catch (error) {
         next(error);
     }
@@ -351,16 +336,11 @@ const editeCardbuy = async (req, res, next) => {
 const editeCardPrice = async (req, res, next) => {
     const {idOfDay,numberOfDays} = req.body;
     try {
-        console.log(typeof (numberOfDays));
         const currentDate = new Date();
-        console.log(currentDate);
         const dateregister =currentDate.toISOString().split('T')[0]
-        console.log(dateregister);
         await Admin.updateOne({ _id: idOfDay }, { $set: { dateregister: dateregister } });
         currentDate.setDate(currentDate.getDate() + parseInt(numberOfDays));
-        console.log(currentDate);
         const subenddate =currentDate.toISOString().split('T')[0]
-        console.log(subenddate);
         await Admin.updateOne({ _id: idOfDay }, { $set: { subenddate: subenddate } });
         await Admin.updateOne({ _id: idOfDay }, { $set: { subdata: numberOfDays } });
         res.render('finsh');
