@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const Admin = require('../model/Admin');
 const Product = require('../model/Product');
+const Productacademic = require('../model/Productacademic');
 const Commint= require('../model/commint')
+const Productbuy = require('../model/Productbuy')
 const {createRequsting,createRequsting_2,createRequsting_3,searchbar} = require('../controllers/auth');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -29,14 +31,18 @@ router.get('/:id', async(req, res, next) => {
   console.log(req.params.id);
   const admin=await Admin.find({ _id:req.params.id })
   const product=await Product.find({ idname:req.params.id })
+  const productacademic=await Productacademic.find({ idname:req.params.id })
+  const productbuy=await Productbuy.find({ idname:req.params.id })
   const commint=await Commint.find({ idname:req.params.id })
   
   if(admin[0].definthome=='مكتبة')
   {
     res.render('homelib',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,deliveryservice:admin[0].deliveryservice,chunk:product,commint:commint});
   }
-  else{
-    res.render('homelib2',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,deliveryservice:admin[0].deliveryservice,chunk:product,commint:commint});
+  else if(admin[0].definthome=='أكاديمية'){
+    res.render('homelib2',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,deliveryservice:admin[0].deliveryservice,chunk:productacademic,commint:commint});
+  }else{
+    res.render('homelib3',{id:req.params.id,username:admin[0].username,governorate:admin[0].governorate,city:admin[0].city,address:admin[0].address,avatar:admin[0].avatar,deliveryservice:admin[0].deliveryservice,chunk:productbuy,commint:commint});
   }
   
 
