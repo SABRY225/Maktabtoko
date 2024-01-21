@@ -96,7 +96,9 @@
             border: 1px solid #ffffff;
             margin-top: 5px;
         }
-                .inputs-details h3,.inputs-details h4{
+
+        .inputs-details h3,
+        .inputs-details h4 {
             border: 2px solid rgba(255, 255, 255, 0.447);
             border-radius: 10px;
             padding: 10px;
@@ -108,23 +110,56 @@
             max-height: 80px;
             overflow-y: auto;
         }
+
         .overscoinput::-webkit-scrollbar {
             width: 8px;
         }
+
         .overscoinput::-webkit-scrollbar-thumb {
 
             border-radius: 10px;
             background-color: #d4af37;
             /* Set thumb color for Chrome and Safari */
         }
+
         .overscoinput::-webkit-scrollbar-track {
             width: 2px;
             background-color: rgba(0, 128, 0, 0);
             /* Set track color for Chrome and Safari */
         }
-       .header_section_4_1{
-        margin-top: 250px;
-       }
+
+        .header_section_4_1 {
+            margin-top: 250px;
+        }
+                .cardacadame {
+            max-width: 400px;
+            white-space: normal;
+            overflow-wrap: break-word;
+            max-height: 370px;
+            background-color: rgba(216, 216, 216, 0.263);
+            box-shadow: 0px 0px 10px #ffffff;
+            font-family: inherit;
+            position: relative;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .quotecardacadame {
+            color: rgb(203, 6, 6);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .cardacadame-name {
+            font-weight: 700;
+            color: rgb(0, 0, 0);
+            padding: 35px;
+            line-height: 23px;
+        }
+
+        .section_descrabtion {
+            margin: 50px;
+        }
     </style>
 </head>
 
@@ -150,7 +185,7 @@
                     <span>{{this.governorate}} - </span>
                     <span>{{this.city}} - </span>
                     <span>{{this.address}} - </span>
-                    <span class="text-warning">{{this.deliveryservice}}</span>
+                    <!-- <span class="text-warning">{{this.deliveryservice}}</span> -->
                 </div>
             </div>
             <div class="print">
@@ -164,21 +199,48 @@
                 </div>
             </div>
             <div class="header_section_4">
+                                <div class="section_descrabtion container text-center">
+                    <div class="cardacadame">
+                        <div class="cardacadame-name">
+                            <h5 class="text-center text-danger">وصف عن المؤسسة</h5>
+                            {{#if descrabtion}}
+                            <p class="text-center text-light">{{descrabtion.descrabtionhome}}</ {{else}} <p
+                                    class="text-center text-light">لا يوجد وصف للمؤسسة</ {{/if}} p>
+                        </div>
+                        <div class="quotecardacadame">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="50"
+                                width="50">
+                                <path fill="currentColor"
+                                    d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 <br><br>
                 <h2 class="h">العروض</h2>
                 <div class="section_0 d-flex overscrol ">
                     {{#each chunk}}
                     <div class="ss">
                         <div class="text-center">
-                            <img src="{{this.avatar}}"
-                                style="width: 150px;height: 150px;border-radius: 50%;">
+                            <img src="{{this.avatar}}" style="width: 150px;height: 150px;border-radius: 50%;">
                         </div>
                         <div class="text-center inputs-details">
+                            <br>
+                            <label for="username" class="form-label text-danger">اسم الكورس</label>
                             <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center text-warning overscoinput"> <span class="text-danger"><del>{{this.beforprice}} &pound;</del> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{this.afterprice}} &pound;</h4>
-                            <h4 class="text-center text-warning overscoinput">{{this.typecourse}} </h4>
+                            <label for="username" class="form-label text-danger">سعر الكورس</label>
+                            <h4 class="text-center text-warning"> <span class="text-danger"><del>{{this.beforprice}}
+                                        &pound;</del>
+                                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{this.afterprice}}
+                                &pound;</h4>
+                            <label for="username" class="form-label text-danger">نوعية الكورس</label>
+                            <h4 class="text-center text-warning">{{this.typecourse}} </h4>
+                            <label for="username" class="form-label text-danger">محتويات الكورس</label>
                             <h4 class="text-center text-warning overscoinput">{{this.descritioncourse}} </h4>
+                            <label for="username" class="form-label text-danger"> السيرة الذاتية للمدرب</label>
                             <h4 class="text-center text-warning overscoinput">{{this.desecribationcotach}} </h4>
+                            <label for="username" class="form-label text-danger"> الملاحظات</label>
                             <h4 class="text-center text-warning overscoinput">{{this.notdescriation}} </h4>
                         </div>
                     </div>

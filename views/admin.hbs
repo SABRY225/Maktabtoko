@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -35,12 +35,11 @@
         rel="stylesheet">
     <!-- owl stylesheets -->
     <link rel="stylesheet" href="/stylesheets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/stylesheets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
         media="screen">
 </head>
 
-<body>
+<body> 
     <div class="overlay_2"></div>
     <!--header section start -->
     <div class="header_section-2 header_admin">
@@ -67,34 +66,39 @@
                             <div class="mb-3 text-center h4 ">
                                 <label for="definthome" class="form-label text-danger">نوع المؤسسة</label>
 
-                                <select id="governate" name="definthome" id="definthome" required
+                                <select id="definthome" name="definthome" id="definthome" required
                                     class="form-control form-control_1">
                                     <option value="none" hidden="">نوع المؤسسة</option>
                                     <option value="مكتبة">مكتبة</option>
-                                    <option value="مكتبة كتب وروايات">مكتبة كتب وروايات</option>
+                                    <option value="مكتبة كتب وروايات">متاجر كتب</option>
                                     <option value="أكاديمية">أكاديمية</option>
 
                                 </select>
                             </div>
                             <div class="mb-3 text-center h4 ">
                                 <label for="deliveryservice" class="form-label text-danger"> خدمة التوصيل</label>
-                                <select id="deliveryservice" name="deliveryservice" class="form-control form-control_1">
+                                <select id="deliveryservice" name="deliveryservice"
+                                    class="form-control form-control_1" >
                                     <option value="none" hidden=""> خدمة التوصيل </option>
-                                    <option value="متاح توصيل دليفري">توصيل دليفري </option>
+                                    <option value="متاح توصيل دليفري">( مكتبةاو متجر كتب) توصيل دليفري </option>
+                                    <option value="اونلاين">( أكاديمية) اونلاين</option>
+                                    <option value=" اوفلاين ">(أكاديمية) اوفلاين</option>
                                     <option value=" لا يوجد خدمة توصيل ">لا يوجد</option>
                                 </select>
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="username" class="form-label text-danger "> اسم المؤسسة</label>
-                                <input type="text" name="username" class="form-control form-control_1" id="username" required="">
+                                <input type="text" name="username" class="form-control form-control_1" id="username"
+                                    required="">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="phoneadmin" class="form-label text-danger ">رقم الهاتف</label>
-                                <input type="text" name="phoneadmin" class="form-control form-control_1" id="phoneadmin" pattern="[0-9]{11}" minlength="11" maxlength="11" required="">
+                                <input type="text" name="phoneadmin" class="form-control form-control_1" id="phoneadmin"
+                                    pattern="[0-9]{11}" minlength="11" maxlength="11" required="">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="governorate" class="form-label text-danger">المحافظة</label>
-                                <select id="governate"  name="governorate" class="form-control form-control_1"  >
+                                <select id="governate" name="governorate" class="form-control form-control_1">
                                     <option value="none" hidden=""> المحافظة</option>
                                     <option value="قنا">قنا</option>
                                     <option value="القاهرة">القاهرة</option>
@@ -135,7 +139,7 @@
                                 <label for="address" class="form-label text-danger "> العنوان </label>
                                 <input type="text" name="address" pattern="[\u0600-\u06FF\s]+"
                                     class="form-control form-control_1"
-                                    placeholder="يجب أن يحتوي النص على حروف عربية فقط" id="address" >
+                                    placeholder="يجب أن يحتوي النص على حروف عربية فقط" id="address">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="img" class="form-label text-danger ">صورة المؤسسة</label>
@@ -145,11 +149,12 @@
                             <div class="mb-3 text-center h4">
                                 <label for="email" class="form-label text-danger">البريد الالكتروني</label>
                                 <input class="form-control form-control_1" type="email" id="email"
-                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" name="email" >
+                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" name="email">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <label for="password" class="form-label text-danger">كلمة المرور</label>
-                                <input class="form-control form-control_1" type="password" id="password" name="password">
+                                <input class="form-control form-control_1" type="password" id="password"
+                                    name="password">
                             </div>
                             <div class="mb-3 text-center h4">
                                 <button type="submit" class="btn btn-warning ">تسجيل</button>
@@ -165,82 +170,6 @@
     </div>
     <!--header section end -->
 
-
-
-    <!-- footer section start -->
-    {{!-- <div class="footer_section layout_padding">
-        <div class="container">
-            <div class="text-center ">
-                <div style="padding: 30px;background-color: #FDFEFE;border-radius: 20px;"></div>
-            </div>
-            <div class="footer_section_2">
-                <div class="row">
-                    <div class="col-lg-3 margin_top">
-                        <div class="call_text"><a href="#"><img src="/images/call-icon1.png"><span
-                                    class="padding_left_15">Call Now
-                                    +201064214425</span></a></div>
-                        <div class="call_text"><a href="#"><img src="/images/mail-icon1.png"><span
-                                    class="padding_left_15">maktabtoko@gmail.com</span></a></div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="information_main">
-                            <h4 class="information_text">social media</h4>
-                            <p class="many_text">
-                                Facebook
-                                <br>
-                                Twitter
-                                <br>
-                                LinkedIn
-                                <br>
-                                Instgram
-                                <br>
-                                Youtube
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="information_main">
-                            <h4 class="information_text">Our Services</h4>
-                            <p class="many_text">
-                                Study office services
-                                <br>
-                                educational services
-                                <br>
-                                commercial services
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="information_main">
-                            <h4 class="information_text">Quick Linkes</h4>
-                            <p class="many_text">
-                                Home
-                                <br>
-                                Login
-                                <br>
-                                Register
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- footer section end -->
-    <!-- copyright section start -->
-    {{!-- <div class="copyright_section">
-        <div class="container">
-            <p class="copyright_text">© 2024 All Rights Reserved. <a
-                    href="https://www.facebook.com/profile.php?id=100078522217484" target="_blank">CodeCome</a></p>
-        </div>
-    </div> --}}
-    <!-- copyright section end -->
-    <!-- sidebar -->
-    <script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="/javascripts/custom.js"></script>
-    <!-- javascript -->
-    <script src="/javascripts/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 
-</html>
+</html> 

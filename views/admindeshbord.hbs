@@ -80,7 +80,9 @@
             margin: 50px 10px 10px 10px;
             color: #ffffff;
         }
-        .inputs-details h3,.inputs-details h4{
+
+        .inputs-details h3,
+        .inputs-details h4 {
             border: 2px solid rgba(255, 255, 255, 0.447);
             border-radius: 10px;
             padding: 10px;
@@ -92,28 +94,69 @@
             max-height: 80px;
             overflow-y: auto;
         }
+
         .overscoinput::-webkit-scrollbar {
             width: 8px;
         }
+
         .overscoinput::-webkit-scrollbar-thumb {
 
             border-radius: 10px;
             background-color: #d4af37;
             /* Set thumb color for Chrome and Safari */
         }
+
         .overscoinput::-webkit-scrollbar-track {
             width: 2px;
             background-color: rgba(0, 128, 0, 0);
             /* Set track color for Chrome and Safari */
         }
-        .header_section_4_1{
-        margin-top: 150px;
+
+        .header_section_4_1 {
+            margin-top: 150px;
         }
-        .header_section_4_2{
-        margin-top: 70px;
+
+        .header_section_4_2 {
+            margin-top: 70px;
         }
-        .header_section_5,.all{
+
+        .header_section_5,
+        .all {
             height: 320vh;
+        }
+
+        .header_section_4_1 {
+            margin-top: 50px;
+        }
+
+        .cardacadame {
+            max-width: 400px;
+            white-space: normal;
+            overflow-wrap: break-word;
+            max-height: 370px;
+            background-color: rgba(216, 216, 216, 0.263);
+            box-shadow: 0px 0px 10px #ffffff;
+            font-family: inherit;
+            position: relative;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .quotecardacadame {
+            color: rgb(203, 6, 6);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .cardacadame-name {
+            font-weight: 700;
+            color: rgb(0, 0, 0);
+            padding: 35px;
+            line-height: 23px;
+        }
+
+        .section_descrabtion {
+            margin: 50px;
         }
     </style>
 </head>
@@ -132,8 +175,7 @@
                 aria-labelledby="offcanvasDarkNavbarLabel">
 
                 <div class="offcanvas-header">
-                    <img src="{{imgadmin}}" alt="photo"
-                        style="width: 100px;height: 100px;border-radius: 50%;">
+                    <img src="{{imgadmin}}" alt="photo" style="width: 100px;height: 100px;border-radius: 50%;">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">{{adminuser}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
@@ -166,6 +208,10 @@
                     class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                     انشاء منتج
                 </button>
+                <button style="position: relative; left: 10%; transform: translate(-50%);" type="button"
+                    class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal_2">
+                    وصف المؤسسة
+                </button>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -187,7 +233,8 @@
                                     </div>
                                     <div class="mb-3 text-center h4">
                                         <label for="img" class="form-label text-danger">صورة المؤسسة</label>
-                                        <input type="file" id="avatar" name="avatar" accept="image/*" class="form-control" />
+                                        <input type="file" id="avatar" name="avatar" accept="image/*"
+                                            class="form-control" />
                                     </div>
                                     <div class="mb-3 text-center h4">
                                         <label for="username" class="form-label text-danger">اسم المنتج</label>
@@ -205,9 +252,44 @@
                                     </div>
                                     <div class="mb-3 text-center h4">
                                         <label for="username" class="form-label text-danger">تفاصيل المنتج
-                                            </label>
-                                        <input type="text" name="descrabationproduct" class="form-control" id="descrabationproduct">
+                                        </label>
+                                        <input type="text" name="descrabationproduct" class="form-control"
+                                            id="descrabationproduct">
                                     </div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                    <button type="submit" class="btn btn-primary">حفظ</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel_2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title h2" id="exampleModalLabel_2">اضافة وصف جديد</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{!-- Form Model --}}
+                                <form action="admin/descrabtion" method="post">
+                                    <div class="mb-3 text-center h4">
+                                        <input type="text" id="idadmin" name="idadmin" value="{{idadmin}}"
+                                            style="display: none;" />
+                                    </div>
+                                    <div class="mb-3 text-center h4">
+                                        <label for="img" class="form-label text-danger">الوصف </label>
+                                        <textarea class="form-control" placeholder="ادخل نصًا (حد أقصى 200 حرفًا):"
+                                            id="descrabtionhome" name="descrabtionhome" rows="3" maxlength="200"></textarea>
+                                    </div>
+
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
                                     <button type="submit" class="btn btn-primary">حفظ</button>
                                 </form>
@@ -221,17 +303,43 @@
         <div class="all">
             <div class="header_section_4">
                 <br><br>
+                <div class="section_descrabtion">
+                    <div class="cardacadame">
+                        <div class="cardacadame-name">
+                            <h5 class="text-center text-danger">وصف عن المؤسسة</h5>
+                            {{#if descrabtion}}
+                            <p class="text-center text-light">{{descrabtion.descrabtionhome}}</
+                            {{else}}
+                            <p class="text-center text-light">لا يوجد وصف للمؤسسة</
+                            {{/if}}
+                            p>
+                        </div>
+                        <div class="quotecardacadame">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="50"
+                                width="50">
+                                <path fill="currentColor"
+                                    d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 <h2 class="h"> المنتجات</h2>
                 <div class="section_0 d-flex overscrol ">
                     {{#each product}}
                     <div class="ss">
                         <div class="text-center">
-                            <img src="{{this.avatar}}"
-                                style="width: 150px;height: 150px;border-radius: 50%;">
+                            <img src="{{this.avatar}}" style="width: 150px;height: 150px;border-radius: 50%;">
                         </div>
                         <div class="text-center inputs-details">
+                            <label for="username" class="form-label text-danger">اسم المنتج</label>
                             <h3 class="text-center">{{this.name}}</h3>
-                            <h4 class="text-center text-warning"> <span class="text-danger"><del>{{this.beforprice}} &pound;</del> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{this.afterprice}} &pound;</h4>
+                            <label for="username" class="form-label text-danger">سعر المنتج</label>
+                            <h4 class="text-center text-warning"> <span class="text-danger"><del>{{this.beforprice}}
+                                        &pound;</del>
+                                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{this.afterprice}}
+                                &pound;</h4>
+                            <label for="username" class="form-label text-danger">تفاصيل المنتج</label>
                             <h4 class="text-center text-warning overscoinput">{{this.descrabationproduct}} </h4>
                         </div>
                         <div class="text-center">
@@ -260,7 +368,7 @@
                             <h4 class="text-center text-warning">{{this.phone}}</h4>
                             <h4 class="text-center overscoinput text-warning">{{this.massage}}</h4>
                             <h4><a href="{{this.filepdf}}">اضغط هنا لتحميل الملف</a></h4>
-                            <span >تاريخ الطلب</span> 
+                            <span>تاريخ الطلب</span>
                             <h4 class="text-center text-warning">{{this.dateregister}}</h4>
 
                         </div>
@@ -281,7 +389,7 @@
                             <h3 class="text-center text-warning">{{this.nameOrder}}</h3>
                             <h4 class="text-center text-warning">{{this.phoneOrder}}</h4>
                             <h4 class="text-center overscoinput text-warning">{{this.massageOrder}}</h4>
-                            <span >تاريخ الطلب</span> 
+                            <span>تاريخ الطلب</span>
                             <h4 class="text-center text-warning">{{this.dateregister}}</h4>
                         </div>
                     </div>

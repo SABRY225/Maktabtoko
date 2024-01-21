@@ -3,6 +3,7 @@ const Admin = require('../model/Admin');
 const Product = require('../model/Product');
 const Productacademic = require('../model/Productacademic');
 const Productbuy = require('../model/Productbuy')
+const Descrabtion=require('../model/descrabtionhome')
 const Requsting = require('../model/Requsting');
 const Order = require('../model/Order');
 const Commint = require('../model/commint');
@@ -379,15 +380,16 @@ const login = async (req, res, next) => {
                     const product = await Product.find({ idname: admin.id })
                     const productacademic = await Productacademic.find({ idname: admin.id })
                     const productbuy = await Productbuy.find({ idname: admin.id })
+                    const descrabtion=await Descrabtion.findOne({ idadmin: admin.id })
                     const requsting = await Requsting.find({ idname: admin.id })
                     const order = await Order.find({ idname: admin.id })
                     if (admin.definthome === "مكتبة") {
-                        res.render("admindeshbord", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: product, requsting: requsting, order: order });
+                        res.render("admindeshbord", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: product, requsting: requsting, order: order ,descrabtion:descrabtion});
                     }else if(admin.definthome === "أكاديمية") {
-                        res.render("admindeshbord_2", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: productacademic, order: order });
+                        res.render("admindeshbord_2", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: productacademic, order: order,descrabtion:descrabtion });
                     }
                     else {
-                        res.render("admindeshbord_3", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: productbuy, order: order });
+                        res.render("admindeshbord_3", { adminuser: admin.username, imgadmin: admin.avatar, idadmin: admin.id, product: productbuy, order: order ,descrabtion:descrabtion});
                     }
                 }
             }
@@ -408,7 +410,18 @@ const login = async (req, res, next) => {
         next(error);
     }
 };
-
+//createDescrabtion
+const createDescrabtion=async (req, res, next) => {
+    const { descrabtionhome } = req.body;
+    const idadmin=req.body.idadmin.toString();
+    try {
+        const descrabtion = new Descrabtion({ idadmin,descrabtionhome });
+        await descrabtion.save();
+        res.render('finsh')
+    } catch (error) {
+        next(error);
+    }
+};
 // time product
 const giveCurrentDateTime = () => {
     const today = new Date();
@@ -417,4 +430,4 @@ const giveCurrentDateTime = () => {
     const dateTime = date + ' ' + time;
     return dateTime;
 }
-module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice,createProductacademic,deleteproductacademy,createProductbuy,deleteproductbuy,deleteadmin};
+module.exports = { registerAdmin, login, createProduct, createRequsting, createRequsting_2, createRequsting_3, searchbar, nopermissions, permissions, deleteproduct,editeCardlib ,editeCardacd,editeCardbuy,editeCardPrice,createProductacademic,deleteproductacademy,createProductbuy,deleteproductbuy,deleteadmin,createDescrabtion};
