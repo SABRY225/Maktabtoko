@@ -617,3 +617,11 @@
 
 }
 
+@media (min-width:1000px) {
+    .dK-100{
+        margin-left: 0px !important;
+    }
+    .btn_main{
+        display: flex ;
+    }
+}
