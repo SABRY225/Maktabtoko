@@ -31,8 +31,8 @@ const registerAdmin = async (req, res, next) => {
     let subdata
     let subenddate
     if (definthome === "مكتبة") {
-        subdata=30
-        currentDate.setDate(currentDate.getDate() + 30);
+        subdata=15
+        currentDate.setDate(currentDate.getDate() + 15);
         subenddate =currentDate.toISOString().split('T')[0]
     }else{
         subdata=21
