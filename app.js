@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
+var pricesRouter = require('./routes/prices');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var homeRouter=require('./routes/home')
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
+app.use('/', pricesRouter);
 app.use('/login', loginRouter);
 app.use('/login/admin', loginRouter);
 app.use('/login/admin/requsting', loginRouter);
