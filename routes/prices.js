@@ -4,7 +4,7 @@ const Cardlib= require('../model/cardlib');
 const CardAca= require('../model/cardaca');
 const CardBuy= require('../model/cardbuy');
 
-/* GET home page. */
+/* GET prices page. */
 router.get('/', async(req, res, next) => {
   const cardlib = await Cardlib.findOne().sort({ _id: -1 }).limit(1)
   const Cardaca = await CardAca.findOne().sort({ _id: -1 }).limit(1)
