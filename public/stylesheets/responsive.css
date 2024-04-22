@@ -609,9 +609,19 @@
     .copyright_text {
         font-size: 19px;
     }
-
+.dK-100{
+    margin-left: 100px !important;
+}
 
 
 
 }
 
+@media (min-width:1000px) {
+    .dK-100{
+        margin-top: 0px !important;
+    }
+    .btn_main{
+        display: flex ;
+    }
+}
